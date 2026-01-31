@@ -1,0 +1,24 @@
+{
+    "id": 5300003,
+    "text": "第x天生成仪式 5000001",
+    "is_replay": 0,
+    "auto_start_init": [1],
+    "start_trigger": false,
+    "on":{
+      "round_begin_ba":1 //每回合刷一次
+    },
+    "condition":{
+      "counter.7000060>=":4, // 第x天生成reg ， 计数器7000060根据度过的回合数计算
+      "!rite":5000001 // 不存在这个仪式才能生成仪式
+    },
+    "settlement": [
+        {
+            "tips_resource":"",
+            "tips_text":"",
+            "action":{
+                "rite":5000001,
+            }
+        }
+
+    ]
+}

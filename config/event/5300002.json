@@ -1,29 +1,31 @@
 {
-        "id": 5300002, //未被使用的数字53开头的7位数id
-        "text": "仪式5000002不存在时触发仪式5000002", //策划自己看的备注
-        "is_replay": 1, //是否可以重复触发，动作未执行都不算触发，0不可以，1可以
-        "auto_start_init": [1],
-        // "auto_start": false,
-        //游戏初始化时（新游戏），用来设置是否默认激活。当前false为不激活
-        //如果要在新手阶段（苏丹玩苏丹卡的时候）设置默认激活，改为"auto_start_init": [0],
-        //如果要在正式阶段（主角玩苏丹卡的时候）设置默认激活，改为"auto_start_init": [1],
-        "start_trigger": true,
-        "on":{
-        },
-        "condition":{  //在满足触发时，开始检定条件
-            "!rite":5000002
-            //根据策划需求选用可用的条件
-            //根据策划需求可以配置多个，并灵活使用any，all等语法
-            //如果配置为空则视作满足条件
-        },
-        "settlement": [ //条件检定通过开始执行具体的动作
-            {
-                "tips_resource":"", //参数要保留，但没有用，不用配置
-                "tips_text":"", //参数要保留，但没有用，不用配置
-                "action":{  //执行具体的动作
-                    "rite":5000002
+    "id": 5300002,
+    "text": "第x天给手牌添加charlie",
+    "is_replay": 0,
+    "auto_start_init": [1],
+    "start_trigger": false,
+    "on":{
+      "round_begin_ba":1 //每回合刷一次
+    },
+    "condition":{
+      "counter.7000060=":3, // 第x天生成reg 计数器7000060根据度过的回合数计算
+      "!hand_have.2100002":1, // 检测手牌是否 不存在id为xxx的卡牌
+    },
+    "settlement": [
+        {
+            "tips_resource":"",
+            "tips_text":"",
+            "action":{
+                "card":2100002,
+                "success":{
+                    "prompt":{
+                        "id": "5300002_prompt_01",
+                        "text":"charlie加入了你的队伍",
+                        "icon":"cards/charlie"
+                    }
                 }
             }
+        }
 
-        ]
-    }
+    ]
+}

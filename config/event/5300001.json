@@ -1,0 +1,30 @@
+{
+    "id": 5300001,
+    "text": "第x天给手牌添加reg",
+    "is_replay": 0,
+    "auto_start_init": [1],
+    "start_trigger": false,
+    "on":{
+      "round_begin_ba":1 //每回合刷一次
+    },
+    "condition":{
+      "counter.7000060=":2 // 第x天生成reg ， 计数器7000060根据度过的回合数计算
+    },
+    "settlement": [
+        {
+            "tips_resource":"",
+            "tips_text":"",
+            "action":{
+                "card":2100001,
+                "success":{
+                    "prompt":{
+                        "id": "5300001_prompt_01",
+                        "text":"reg加入了你的队伍",
+                        "icon":"cards/reginald"
+                    }
+                }
+            }
+        }
+
+    ]
+}
